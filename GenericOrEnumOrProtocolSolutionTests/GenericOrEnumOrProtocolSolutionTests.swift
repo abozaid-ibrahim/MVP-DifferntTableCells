@@ -13,24 +13,32 @@ class GenericOrEnumOrProtocolSolutionTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//    func testGoldUserHasRightCell() {
+//        let gold = GoldUserViewModel(posts: 100, name: "Ali Hussein")
+//        let presenter = UsersPresenter()
+//        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "v") as! ViewController
+//        controller.loadViewIfNeeded()
+//       let cell =  controller.tableView.cellForRow(at: IndexPath(item: 0, section: 0))
+//        let type = cell.iseq
+//        XCTAssertEqual(cell., PrivateUserTableCell.self)
+//    }
+//    func testGoldUserHas_100_Post() {
+//        let gold = GoldUserViewModel(posts: 100, name: "Ali Hussein")
+//        let presenter = UsersPresenter()
+//        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "v") as! ViewController
+//        controller.loadViewIfNeeded()
+//        let cell =  controller.tableView.cellForRow(at: IndexPath(item: 0, section: 0))
+//        let type = cell.iseq
+//        XCTAssertEqual(cell., PrivateUserTableCell.self)
+//    }
+    func testPrivateUserHas_20_Post() {
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testGuestUserHas_1_Post() {
     }
-    
 }
