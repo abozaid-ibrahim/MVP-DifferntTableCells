@@ -8,16 +8,17 @@
 
 import UIKit
 protocol UsersView {
-    
+    func setUser(user:UserDataModel)
     
 }
 final class UsersPresenter {
     
     var view:UsersView?
+    
     func attach(view:UsersView){
         self.view = view;
     }
-    func getUserData(user:UserTypes)->UserDataModel{
+    private func getUserData(user:UserTypes)->UserDataModel{
         switch user {
             
         case .privateUser:
@@ -27,6 +28,9 @@ final class UsersPresenter {
         case .guestUser:
             return GuestUserViewModel(posts: 1, name: "Farouk")
         }
+    }
+    func loadData(userType:UserTypes){
+        self.view?.setUser(user: getUserData(user: userType))
     }
     func getCellId(user:UserTypes)->String{
         switch user {

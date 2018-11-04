@@ -13,11 +13,6 @@ class UsersViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     var user:UserDataModel!
-//    init() {
-//        super.init
-//        self.userType = .privateUser
-//    }
-    
     var userType:UserTypes!
     
     
@@ -26,15 +21,14 @@ class UsersViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerTableCell(usertype: userType)
-
-        self.user = presenter.getUserData(user: userType)
+        self.presenter.attach(view: self)
+        presenter.loadData(userType: userType)
         
     }
     
     
     private func registerTableCell(usertype: UserTypes){
         switch usertype {
-            
         case .privateUser:
             self.tableView.register(UINib(nibName: "PrivateUserTableCell", bundle: nil), forCellReuseIdentifier: PrivateUserTableCell.id)
             
@@ -47,7 +41,14 @@ class UsersViewController: UIViewController{
     
     
 }
-
+extension UsersViewController:UsersView{
+    func setUser(user: UserDataModel) {
+        self.user = user
+        self.tableView.reloadData()
+    }
+    
+    
+}
 
 extension UsersViewController :UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
