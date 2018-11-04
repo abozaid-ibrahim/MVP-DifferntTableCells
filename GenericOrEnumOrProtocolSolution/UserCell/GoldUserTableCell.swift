@@ -12,7 +12,6 @@ class GoldUserTableCell: UITableViewCell,UserCell {
     func setUserData(data: UserDataModel) {
         let user = data as! GoldUserViewModel
         countLbl.text = user.name
-        print("set my fields")
     }
     
     static var id: String = "GoldUserTableCell"

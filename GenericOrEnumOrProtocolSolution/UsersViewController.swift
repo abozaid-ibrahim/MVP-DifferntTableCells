@@ -24,10 +24,17 @@ class UsersViewController: UIViewController{
         self.presenter.attach(view: self)
         presenter.loadData(userType: userType)
         
+        
     }
     
     
-    private func registerTableCell(usertype: UserTypes){
+    
+    
+    
+}
+
+private extension UsersViewController{
+    func registerTableCell(usertype: UserTypes){
         switch usertype {
         case .privateUser:
             self.tableView.register(UINib(nibName: "PrivateUserTableCell", bundle: nil), forCellReuseIdentifier: PrivateUserTableCell.id)
@@ -38,8 +45,6 @@ class UsersViewController: UIViewController{
             self.tableView.register(UINib(nibName: "PublicUserTableCell", bundle: nil), forCellReuseIdentifier: PublicUserTableCell.id)
         }
     }
-    
-    
 }
 extension UsersViewController:UsersView{
     func setUser(user: UserDataModel) {

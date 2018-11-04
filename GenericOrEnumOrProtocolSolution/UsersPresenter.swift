@@ -11,6 +11,8 @@ protocol UsersView {
     func setUser(user:UserDataModel)
     
 }
+
+
 final class UsersPresenter {
     
     var view:UsersView?
@@ -18,23 +20,14 @@ final class UsersPresenter {
     func attach(view:UsersView){
         self.view = view;
     }
-    private func getUserData(user:UserTypes)->UserDataModel{
-        switch user {
-            
-        case .privateUser:
-            return PrivateUserViewModel(posts: 10, name: "Ali")
-        case .goldUser:
-            return GoldUserViewModel(posts: 100, name: "Hossam")
-        case .guestUser:
-            return GuestUserViewModel(posts: 1, name: "Farouk")
-        }
-    }
+    
+   
     func loadData(userType:UserTypes){
         self.view?.setUser(user: getUserData(user: userType))
     }
+    
     func getCellId(user:UserTypes)->String{
         switch user {
-            
         case .privateUser:
             return PrivateUserTableCell.id
         case .goldUser:
@@ -45,5 +38,20 @@ final class UsersPresenter {
     }
     
     
+    
+}
+
+private extension UsersPresenter{
+     func getUserData(user:UserTypes)->UserDataModel{
+        switch user {
+            
+        case .privateUser:
+            return PrivateUserViewModel(posts: 10, name: "Ali")
+        case .goldUser:
+            return GoldUserViewModel(posts: 100, name: "Hossam")
+        case .guestUser:
+            return GuestUserViewModel(posts: 1, name: "Farouk")
+        }
+    }
     
 }
