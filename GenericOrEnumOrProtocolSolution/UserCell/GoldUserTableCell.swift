@@ -9,11 +9,16 @@
 import UIKit
 
 class GoldUserTableCell: UITableViewCell,UserCell {
-    func setUserData(data: UserDataModel) {
+    func setUserInfo(data: UserDataModel) {
         let user = data as! GoldUserViewModel
         countLbl.text = user.name
-        print("set my fields")
     }
+    
+    func setUserData<T>(data: T) where T : UserDataModel {
+        let user = data as! GoldUserViewModel
+        countLbl.text = user.name
+    }
+    
     
     static var id: String = "GoldUserTableCell"
     @IBOutlet weak var countLbl: UILabel!

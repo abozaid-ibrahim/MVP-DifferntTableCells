@@ -9,14 +9,21 @@
 import UIKit
 
 class PrivateUserTableCell: UITableViewCell,UserCell {
+ 
+    func setUserInfo(data: UserDataModel) {
+        let user = data as! PrivateUserViewModel
+        countLbl.text = user.name
+    }
+    
+    func setUserData<T>(data: T) where T : UserDataModel {
+        let user = data as! PrivateUserViewModel
+        countLbl.text = user.name
+    }
+    
     static var id: String = "PrivateUserTableCell"
     
     @IBOutlet weak var countLbl: UILabel!
-    func setUserData(data: UserDataModel) {
-        let user = data as! PrivateUserViewModel
-        countLbl.text = user.name
-        print("set my fields")
-    }
+   
     override func awakeFromNib() {
         super.awakeFromNib()
     }

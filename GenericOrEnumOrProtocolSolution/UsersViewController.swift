@@ -13,6 +13,8 @@ class UsersViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     var user:UserDataModel!
+    var user1:UserDataModel!
+
     var userType:UserTypes!
     
     
@@ -42,6 +44,17 @@ class UsersViewController: UIViewController{
     
 }
 extension UsersViewController:UsersView{
+    func setDataSource(sourc: UITableViewDataSource) {
+        self.tableView.dataSource = sourc
+        self.tableView.reloadData()
+    }
+    
+    func setUser<T>(user: T) where T : UserDataModel {
+        self.user = user
+        
+        self.tableView.reloadData()
+    }
+    
     func setUser(user: UserDataModel) {
         self.user = user
         self.tableView.reloadData()
@@ -50,11 +63,15 @@ extension UsersViewController:UsersView{
     
 }
 
-extension UsersViewController :UITableViewDataSource {
+final class UsersTable<T:UserDataModel>:NSObject, UITableViewDataSource {
+    var user: T!
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let id = presenter.getCellId(user: userType)
+        let id = PrivateUserTableCell.id //presenter.getCellId(user: userType)
         let cell  = tableView.dequeueReusableCell(withIdentifier: id) as! UserCell
-        cell.setUserData(data: user)
+//        cell.setUserData(data: user)
+//        cell.setUserInfo(data: self.user)
+        cell.setUserData(data: user )
         return cell as! UITableViewCell
     }
     

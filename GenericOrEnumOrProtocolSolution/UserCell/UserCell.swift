@@ -9,7 +9,9 @@
 import Foundation
 protocol UserCell{
     static var id:String {get}
-    func setUserData(data:UserDataModel)
+  
+    func setUserInfo(data:UserDataModel)
+    func setUserData<T:UserDataModel>(data:T)
 }
 
 
