@@ -9,9 +9,16 @@
 import UIKit
 
 class GoldUserTableCell: UITableViewCell,UserCell {
-    func setUserData(data: UserDataModel) {
-        let user = data as! GoldUserViewModel
-        countLbl.text = user.name
+    
+    @IBAction func printAction(_ sender: UIButton) {
+    
+    //how to handle this action with users presenter
+        
+    }
+    
+    @IBOutlet weak var printButton: UIButton!
+    func setUserData(data: GoldUserViewModel) {
+        countLbl.text = data.name
     }
     
     static var id: String = "GoldUserTableCell"

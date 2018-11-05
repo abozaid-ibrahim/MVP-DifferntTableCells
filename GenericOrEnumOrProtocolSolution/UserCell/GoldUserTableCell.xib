@@ -20,23 +20,37 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uey-j9-mGx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="244" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOX-mk-ZQw">
+                        <rect key="frame" x="252" y="8" width="60" height="27.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="bB5-Ax-9WW"/>
+                        </constraints>
+                        <state key="normal" title="print"/>
+                        <connections>
+                            <action selector="printAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rTs-IX-1s2"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="uey-j9-mGx" secondAttribute="bottom" id="0Vz-Ri-Wr8"/>
-                    <constraint firstAttribute="trailing" secondItem="uey-j9-mGx" secondAttribute="trailing" id="9Mj-1i-lgK"/>
+                    <constraint firstAttribute="bottom" secondItem="IOX-mk-ZQw" secondAttribute="bottom" constant="8" id="RA5-HH-Ueg"/>
                     <constraint firstItem="uey-j9-mGx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TDD-nd-ETL"/>
+                    <constraint firstAttribute="trailing" secondItem="IOX-mk-ZQw" secondAttribute="trailing" constant="8" id="TdW-hZ-m2H"/>
+                    <constraint firstItem="IOX-mk-ZQw" firstAttribute="leading" secondItem="uey-j9-mGx" secondAttribute="trailing" constant="8" id="Vpv-Vo-myy"/>
                     <constraint firstItem="uey-j9-mGx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ate-uv-6FU"/>
+                    <constraint firstItem="IOX-mk-ZQw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="prT-zT-0sz"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="countLbl" destination="uey-j9-mGx" id="QfK-T2-MWV"/>
+                <outlet property="printButton" destination="IOX-mk-ZQw" id="o3c-6A-YZI"/>
             </connections>
         </tableViewCell>
     </objects>

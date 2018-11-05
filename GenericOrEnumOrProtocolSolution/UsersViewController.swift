@@ -27,12 +27,30 @@ class UsersViewController: UIViewController{
         
     }
     
-    
-    
-    
-    
 }
 
+
+extension UsersViewController:UsersView{
+    func setUser(user: UserDataModel) {
+        self.user = user
+        self.tableView.reloadData()
+    }
+}
+
+
+extension UsersViewController :UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let id = presenter.getCellId(user: userType)
+        let cell  = tableView.dequeueReusableCell(withIdentifier: id)
+//        cell.setUserData(data: user)
+        return cell as! UITableViewCell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+}
 private extension UsersViewController{
     func registerTableCell(usertype: UserTypes){
         switch usertype {
@@ -45,26 +63,4 @@ private extension UsersViewController{
             self.tableView.register(UINib(nibName: "PublicUserTableCell", bundle: nil), forCellReuseIdentifier: PublicUserTableCell.id)
         }
     }
-}
-extension UsersViewController:UsersView{
-    func setUser(user: UserDataModel) {
-        self.user = user
-        self.tableView.reloadData()
-    }
-    
-    
-}
-
-extension UsersViewController :UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let id = presenter.getCellId(user: userType)
-        let cell  = tableView.dequeueReusableCell(withIdentifier: id) as! UserCell
-        cell.setUserData(data: user)
-        return cell as! UITableViewCell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
 }

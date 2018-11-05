@@ -12,9 +12,8 @@ class PrivateUserTableCell: UITableViewCell,UserCell {
     static var id: String = "PrivateUserTableCell"
     
     @IBOutlet weak var countLbl: UILabel!
-    func setUserData(data: UserDataModel) {
-        let user = data as! PrivateUserViewModel
-        countLbl.text = user.name
+    func setUserData(data: PrivateUserViewModel) {
+        countLbl.text = data.name
         print("set my fields")
     }
     override func awakeFromNib() {
